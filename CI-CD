@@ -1,0 +1,20 @@
+create folder on .github/workflows
+
+change main.yml content to:
+
+name: Python Check
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    - name: Install dependencies
+      run: pip install flask
+    - name: Run a quick test
+      run: python -m compileall app.py
